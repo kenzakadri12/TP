@@ -9,6 +9,9 @@ import GenreChart from './GenreChart';
 import Menu from './Menu';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Doughnut } from 'react-chartjs-2';
+import AgeChart from './AgeChart';
+import PairsChart from './PairsChart';
+
 
 const marques = [
   { nom: 'ADIDAS', image: 'https://static.vecteezy.com/system/resources/thumbnails/019/766/237/small_2x/adidas-logo-adidas-icon-transparent-free-png.png' },
@@ -95,6 +98,7 @@ function App() {
       <Container>
         <h1>Marques</h1>
         <GenreChart personnes={personnes} />
+        <PairsChart personnes={personnes} /> 
         {/* Affichez les informations des personnes ici */}
         {personnes.map((personne, index) => (
           <Row key={index}>
@@ -130,6 +134,11 @@ function App() {
       <div className="chart-container" style={{ maxWidth: '300px', margin: '0 auto' }}>
         <Doughnut data={chartData} options={chartOptions} />
       </div>
+
+      <div>
+      {/* Affichez d'autres éléments ou composants ici */}
+      <PairsChart personnes={personnes} />
+    </div>
     </div>
   );
   
