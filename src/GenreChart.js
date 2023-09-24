@@ -1,32 +1,37 @@
 // GenreChart.js
+import React from 'react';
+import { Doughnut } from 'react-chartjs-2';
 
-import React, { useEffect } from 'react';
-import Chart from 'chart.js/auto';
+const GenreChart = ({ personnes }) => {
+  // Comptez le nombre de "Mme" et "Mr"
+  const countMme = personnes.filter((personne) => personne.genre === 'Mme').length;
+  const countMr = personnes.filter((personne) => personne.genre === 'Mr').length;
 
-function GenreChart({ genreData }) { // Renommez "data" en "genreData"
-  useEffect(() => {
-    if (!genreData) return;
-
-    const ctx = document.getElementById('genreChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels: ['Mme', 'Mr'],
-        datasets: [
-          {
-            data: [genreData['Mme'] || 0, genreData['Mr'] || 0],
-            backgroundColor: ['#ff9999', '#66b3ff'], // Couleurs des secteurs
-          },
-        ],
+  // Données pour le graphique à secteurs (Doughnut)
+  const chartData = {
+    labels: ['Mme', 'Mr'],
+    datasets: [
+      {
+        data: [countMme, countMr],
+        backgroundColor: ['#36A2EB', '#FF6384'], // Couleurs des secteurs
       },
-    });
-  }, [genreData]);
+    ],
+  };
+
+  // Options du graphique
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
 
   return (
     <div>
-      <canvas id="genreChart" width="400" height="400"></canvas>
+      <h2>Répartition par Genre</h2>
+      <div className="chart-container" style={{ maxWidth: '300px', margin: '0 auto' }}>
+        <Doughnut data={chartData} options={chartOptions} />
+      </div>
     </div>
   );
-}
+};
 
 export default GenreChart;

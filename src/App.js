@@ -8,6 +8,7 @@ import Chart from 'chart.js/auto';
 import GenreChart from './GenreChart';
 import Menu from './Menu';
 import { Navbar, Nav } from 'react-bootstrap';
+import { Doughnut } from 'react-chartjs-2';
 
 const marques = [
   { nom: 'ADIDAS', image: 'https://static.vecteezy.com/system/resources/thumbnails/019/766/237/small_2x/adidas-logo-adidas-icon-transparent-free-png.png' },
@@ -25,8 +26,27 @@ const marques = [
 function App() {
   //const [data, setData] = useState([]);
   const [personnes, setPersonnes] = useState([]);
-  const [genreData, setGenreData] = useState({ Mme: 0, Mr: 0 });
-  const [showGenreChart, setShowGenreChart] = useState(false);
+  const countMme = personnes.filter((personne) => personne.genre === 'Mme').length;
+  const countMr = personnes.filter((personne) => personne.genre === 'Mr').length;
+  //const [genreData, setGenreData] = useState({ Mme: 0, Mr: 0 });
+  //const [showGenreChart, setShowGenreChart] = useState(false);
+
+   // Données pour le graphique à secteurs
+   const chartData = {
+    labels: ['Mme', 'Mr'],
+    datasets: [
+      {
+        data: [countMme, countMr],
+        backgroundColor: ['#36A2EB', '#FF6384'], // Couleurs des secteurs
+      },
+    ],
+  };
+
+  // Options du graphique
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
 
   useEffect(() => {
     Papa.parse(
@@ -42,21 +62,18 @@ function App() {
             const basketsPreferees = marques.filter((marque) =>
               marquesPreferees.includes(marque.nom)
             );
+            // Récupérez également le genre de la personne
+             const genre = personData["Genre"];
+
             return {
               prenom: personData.Prénom,
               nom: personData.Nom,
               basketsPreferees: basketsPreferees,
-              genre: personData.Genre,
+              genre: genre,
+              
             };
           });
           setPersonnes(personnesData);
-          // Compter les réponses "Mme" et "Mr"
-          const genreCount = personnesData.reduce((acc, personne) => {
-            acc[personne.genre] = (acc[personne.genre] || 0) + 1;
-            return acc;
-          }, {});
-          setGenreData(genreCount);
-
           console.log('CSV Data:', result.data); 
         },
       }
@@ -75,9 +92,9 @@ function App() {
 
   return (
     <div>
-       <Menu setShowGenreChart={setShowGenreChart} /> {/* Ajoutez le menu horizontal */}
       <Container>
         <h1>Marques</h1>
+        <GenreChart personnes={personnes} />
         {/* Affichez les informations des personnes ici */}
         {personnes.map((personne, index) => (
           <Row key={index}>
@@ -110,9 +127,8 @@ function App() {
           </Row>
         ))}
       </Container>
-      
-      <div id="genre"> {/* Ajoutez cet élément autour de votre composant GenreChart */}
-        {showGenreChart && <GenreChart data={genreData} />}
+      <div className="chart-container" style={{ maxWidth: '300px', margin: '0 auto' }}>
+        <Doughnut data={chartData} options={chartOptions} />
       </div>
     </div>
   );
