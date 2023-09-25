@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Papa from 'papaparse';
 import { Bar } from 'react-chartjs-2';
 
-const PairsChart = () => {
+const InfluenceChart = () => {
   const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
@@ -14,14 +14,15 @@ const PairsChart = () => {
         header: true,
         complete: (result) => {
           // Extract the data you want to analyze
-          const responses = result.data.map((row) => row['Combien de paires de baskets achetez-vous en moyenne par mois ?']);
+          const responses = result.data.map((row) => row["Qu'est-ce qui influence le plus votre choix de marque de baskets ?"]);
 
-          // Initialize an object to count response frequencies
           const responseCounts = {
-            'Aucune': 0,
-            '1 paire': 0,
-            '2 paires': 0,
-            '3 paires ou plus': 0,
+            'Style et design': 0,
+            'Confort': 0,
+            'Prix': 0,
+            'Réputation de la marque': 0,
+            'Recommandations amis/famille': 0, // Utilisation de "amis/famille" au lieu de "amis ou de la famille"
+            'Publicité': 0,
           };
 
           // Count responses
@@ -36,13 +37,15 @@ const PairsChart = () => {
             labels: Object.keys(responseCounts),
             datasets: [
               {
-                label: 'Nombre de paires',
+                label: 'Nombre de réponses',
                 data: Object.values(responseCounts),
                 backgroundColor: [
                   'rgba(255, 99, 132, 0.7)',
-                  'rgba(240, 99, 132, 0.7)',
+                  'rgba(54, 162, 235, 0.7)',
                   'rgba(255, 206, 86, 0.7)',
-                  'rgba(255, 206, 86, 0.7)',
+                  'rgba(75, 192, 192, 0.7)',
+                  'rgba(153, 102, 255, 0.7)',
+                  'rgba(255, 159, 64, 0.7)',
                 ],
               },
             ],
@@ -71,7 +74,7 @@ const PairsChart = () => {
 
   return (
     <div>
-      <h2>Répartition par Nombre de Paires</h2>
+      <h2>Répartition par Influence sur le choix de marque de baskets</h2>
       <div className="chart-container" style={{ maxWidth: '400px', margin: '0 auto' }}>
         {chartData ? <Bar data={chartData} options={options} /> : 'Chargement en cours...'}
       </div>
@@ -79,4 +82,4 @@ const PairsChart = () => {
   );
 };
 
-export default PairsChart;
+export default InfluenceChart;

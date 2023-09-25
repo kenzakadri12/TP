@@ -11,6 +11,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 import { Doughnut } from 'react-chartjs-2';
 import AgeChart from './AgeChart';
 import PairsChart from './PairsChart';
+import InfluenceChart from './InfluenceChart';
 
 
 const marques = [
