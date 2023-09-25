@@ -98,8 +98,13 @@ function App() {
       <Container>
         <h1>Marques</h1>
         <GenreChart personnes={personnes} />
-        <PairsChart personnes={personnes} /> 
+        <div style={{width:'300px',height:'300px'}}>
+        <h1>Réparition par Age</h1>
+        <AgeChart personnes={personnes} /> 
+        </div>
+        
         {/* Affichez les informations des personnes ici */}
+        <h1>Personnes_Marques_Préférer</h1>
         {personnes.map((personne, index) => (
           <Row key={index}>
             <Col>
@@ -131,14 +136,9 @@ function App() {
           </Row>
         ))}
       </Container>
-      <div className="chart-container" style={{ maxWidth: '300px', margin: '0 auto' }}>
-        <Doughnut data={chartData} options={chartOptions} />
-      </div>
+      
 
-      <div>
-      {/* Affichez d'autres éléments ou composants ici */}
-      <PairsChart personnes={personnes} />
-    </div>
+      
     </div>
   );
   

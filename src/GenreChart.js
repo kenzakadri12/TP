@@ -13,7 +13,7 @@ const GenreChart = ({ personnes }) => {
     datasets: [
       {
         data: [countMme, countMr],
-        backgroundColor: ['#36A2EB', '#FF6384'], // Couleurs des secteurs
+        backgroundColor: ['#FF6384','#36A2EB'], // Couleurs des secteurs
       },
     ],
   };
