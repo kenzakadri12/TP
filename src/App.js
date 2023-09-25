@@ -99,10 +99,14 @@ function App() {
         <h1>Marques</h1>
         <GenreChart personnes={personnes} />
         <div style={{width:'300px',height:'300px'}}>
+        
         <h1>Réparition par Age</h1>
         <AgeChart personnes={personnes} /> 
         </div>
-        
+        <div>
+          <PairsChart personnes={personnes}/>
+        </div> 
+        <div>
         {/* Affichez les informations des personnes ici */}
         <h1>Personnes_Marques_Préférer</h1>
         {personnes.map((personne, index) => (
@@ -134,7 +138,7 @@ function App() {
               </Slider>
             </Col>
           </Row>
-        ))}
+        ))}</div>
       </Container>
       
 
