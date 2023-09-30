@@ -76,7 +76,10 @@ function App() {
   return (
     <div>
       <Container>
-        <h1>Marques</h1>
+        <center>
+          <h1>*** Marques ***</h1>
+        </center>
+        
         <GenreChart personnes={personnes} />
         <div style={{ width: '300px', height: '300px' }}>
           <h1>Répartition par Age</h1>
