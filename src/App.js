@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Papa from 'papaparse';
 import Slider from 'react-slick';
@@ -7,6 +7,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import GenreChart from './GenreChart';
 import AgeChart from './AgeChart';
 import PairsChart from './PairsChart';
+import * as d3 from 'd3';
 
 const marques = [
   { nom: 'ADIDAS', image: 'https://static.vecteezy.com/system/resources/thumbnails/019/766/237/small_2x/adidas-logo-adidas-icon-transparent-free-png.png' },
@@ -16,7 +17,7 @@ const marques = [
   { nom: 'REEBOK', image: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Reebok_logo19.png'},
   { nom: 'CONVERSE', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmQnhp7rg1XS6VzpLqamujEyDfqDW2eLo6OrcpmcrEFO8XxR0YcwQhLcJyvpslMPS-x_Q&usqp=CAU' },
   { nom: 'NB', image: 'https://www.logo.wine/a/logo/New_Balance/New_Balance-Logo.wine.svg' },
-  { nom: 'JORDAN', image: 'https://assets.stickpng.com/images/584292c4a6515b1e0ad75aca.png' },
+  { nom: 'JORDAN', image: 'https://www.freepnglogos.com/uploads/michael-jordan-air-logo-9.png' },
   { nom: 'BALENCIAGA', image: 'https://download.logo.wine/logo/Balenciaga/Balenciaga-Logo.wine.png' },
 ];
 
@@ -124,27 +125,25 @@ function App() {
                   </div>
                 )}
 
-                {/* Affichez les baskets préférées en un slider */}
-                <Slider {...sliderSettings}>
-                  {personne.marquesPreferees.map((basket, index) => (
-                    <div key={index} style={{ textAlign: 'center', margin: '10px' }}>
-                      {/* Appliquez des styles personnalisés pour contrôler la taille de l'image */}
-                      <img
-                        src={basket.image}
-                        alt={basket.nom}
-                        style={{
-                          maxWidth: '100px',
-                          maxHeight: '100px',
-                          display: 'block',
-                          margin: '0 auto',
-                          border: '2px solid #ccc', // Ajoutez une bordure de 2px en couleur grise
-                          borderRadius: '10px', // Ajoutez un coin arrondi de 10px
-                          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)', // Ajoutez une ombre légère
-                        }}
-                      />
-                    </div>
-                  ))}
-                </Slider>
+                {/* Affichez les baskets préférées en utilisant D3.js */}
+                <div style={{ textAlign: 'center' }}>
+                  <Slider {...sliderSettings}>
+                    {personne.marquesPreferees.map((basket, index) => (
+                      <div key={index} style={{ textAlign: 'center', margin: '10px' }}>
+                        <svg width="100" height="100">
+                          <image
+                            x="0"
+                            y="0"
+                            width="100"
+                            height="100"
+                            xlinkHref={basket.image}
+                            alt={basket.nom}
+                          />
+                        </svg>
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
               </Col>
             </Row>
           ))}
