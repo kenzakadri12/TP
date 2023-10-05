@@ -94,7 +94,7 @@ function AgeChart() {
     setChart(newChart);
 
     return () => {
-      <h2>Répartition par Genre</h2>
+      <h2>Genre</h2>
       if (newChart) {
         newChart.destroy();
       }

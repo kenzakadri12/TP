@@ -40,13 +40,13 @@ const PairsChart = () => {
             labels: Object.keys(responseCounts),
             datasets: [
               {
-                label: 'Nombre de paires',
+                label: 'paires',
                 data: Object.values(responseCounts),
                 backgroundColor: [
                   'rgba(173, 216, 230, 0.7)',
-                  'rgba(240, 99, 132, 0.7)',
-                  'rgba(255, 206, 86, 0.7)',
-                  'rgba(255, 110, 10, 0.7)',
+                  'rgba(173, 216, 230, 0.7)',
+                  'rgba(173, 216, 230, 0.7)',
+                  'rgba(173, 216, 230, 0.7)',
                 ],
               },
             ],
@@ -75,7 +75,7 @@ const PairsChart = () => {
 
   return (
     <div>
-      <h2>Répartition par Nombre de Paires</h2>
+      <h2>Répartion par Moyenne</h2>
       <div className="chart-container" style={{ maxWidth: '400px', margin: '0 auto' }}>
         {chartData ? <Bar data={chartData} options={options} /> : 'Chargement en cours...'}
       </div>

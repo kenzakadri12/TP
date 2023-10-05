@@ -8,6 +8,7 @@ import GenreChart from './GenreChart';
 import AgeChart from './AgeChart';
 import PairsChart from './PairsChart';
 import * as d3 from 'd3';
+import BrandChart from './BrandChart';
 
 const marques = [
   { nom: 'ADIDAS', image: 'https://static.vecteezy.com/system/resources/thumbnails/019/766/237/small_2x/adidas-logo-adidas-icon-transparent-free-png.png' },
@@ -78,14 +79,22 @@ function App() {
     <div>
       <Container>
         <center>
-          <h1>*** Marques ***</h1>
+        <h1 style={{ color: 'pink', fontFamily: 'Italic, sans-serif', fontSize: '24px', border: '1px solid pink', padding: '10px' }}>MARQUES</h1>
+
         </center>
         
         <GenreChart personnes={personnes} />
-        <div style={{ width: '300px', height: '300px' }}>
-          <h1>Répartition par Age</h1>
-          <AgeChart personnes={personnes} />
+        <div style={{ display: 'flex' }}>
+          <div style={{ width: '400px', height: '400px', marginRight: '200px'}}>
+            <h1>AgeChart</h1>
+            <AgeChart personnes={personnes} />
+         </div>
+         <div style={{ width: '400px', height: '400px', marginRight: '200px' }}>
+            <h1>BrandChart</h1>
+            <BrandChart personnes={personnes} />
+          </div>
         </div>
+
         <div>
           <PairsChart personnes={personnes} />
         </div>
@@ -126,21 +135,24 @@ function App() {
                 )}
 
                 {/* Affichez les baskets préférées en utilisant D3.js */}
-                <div style={{ textAlign: 'center' }}>
-                  <Slider {...sliderSettings}>
-                    {personne.marquesPreferees.map((basket, index) => (
-                      <div key={index} style={{ textAlign: 'center', margin: '10px' }}>
+              <div style={{ textAlign: 'center' }}>
+                <Slider {...sliderSettings}>
+                  {personne.marquesPreferees.map((basket, index) => (
+                    <div key={index} style={{ textAlign: 'center', margin: '10px' }}>
+                      <div style={{ border: '1px solid #ccc', padding: '10px', display: 'inline-block' }}>
                         <svg width="100" height="100">
                           <image
-                            x="0"
-                            y="0"
-                            width="100"
-                            height="100"
-                            xlinkHref={basket.image}
-                            alt={basket.nom}
-                          />
+                           x="0"
+                           y="0"
+                           width="100"
+                           height="100"
+                           xlinkHref={basket.image}
+                           alt={basket.nom}
+                         />
                         </svg>
+                        <p style={{ margin: '0', textAlign: 'center' }}>{personne.nom}</p>
                       </div>
+                   </div>
                     ))}
                   </Slider>
                 </div>
