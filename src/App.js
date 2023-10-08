@@ -13,6 +13,7 @@ import GenreChartD3 from './GenreChartD3';
 import AgeChartD3 from './AgeChartD3';
 import BrandChartD3 from './BrandChartD3';
 import PairsChartD3 from './PairsChartD3';
+import PieChart from './PieChart';
 
 const marques = [
   { nom: 'ADIDAS', image: 'https://static.vecteezy.com/system/resources/thumbnails/019/766/237/small_2x/adidas-logo-adidas-icon-transparent-free-png.png' },
@@ -86,6 +87,7 @@ function App() {
         <h1 style={{ color: 'pink', fontFamily: 'Italic, sans-serif', fontSize: '24px', border: '1px solid pink', padding: '10px' }}>MARQUES</h1>
 
         </center>
+        <PieChart personnes={personnes} />
         <div style={{ display: 'flex' }}>
           <div style={{ width: '400px', height: '400px', marginRight: '200px'}}>
             <h1>GenreChart</h1>
