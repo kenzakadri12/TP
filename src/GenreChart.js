@@ -26,7 +26,6 @@ const GenreChart = ({ personnes }) => {
 
   return (
     <div>
-      <h2>Répartition par Genre</h2>
       <div className="chart-container" style={{ maxWidth: '300px', margin: '0 auto' }}>
         <Doughnut data={chartData} options={chartOptions} />
       </div>

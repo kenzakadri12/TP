@@ -43,10 +43,10 @@ const PairsChart = () => {
                 label: 'paires',
                 data: Object.values(responseCounts),
                 backgroundColor: [
-                  'rgba(173, 216, 230, 0.7)',
-                  'rgba(173, 216, 230, 0.7)',
-                  'rgba(173, 216, 230, 0.7)',
-                  'rgba(173, 216, 230, 0.7)',
+                  'rgba(173, 216, 230, 9)',
+                  'rgba(173, 216, 230, 5)',
+                  'rgba(173, 216, 230, 5)',
+                  'rgba(173, 216, 230, 5)',
                 ],
               },
             ],
@@ -75,7 +75,6 @@ const PairsChart = () => {
 
   return (
     <div>
-      <h2>Répartion par Moyenne</h2>
       <div className="chart-container" style={{ maxWidth: '400px', margin: '0 auto' }}>
         {chartData ? <Bar data={chartData} options={options} /> : 'Chargement en cours...'}
       </div>

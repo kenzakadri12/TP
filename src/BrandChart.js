@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Chart from 'chart.js/auto';
 import Papa from 'papaparse';
 
-function Favorites() {
+function BrandChart() {
   const [chart, setChart] = useState(null);
   const [favoriteBrandsData, setFavoriteBrandsData] = useState({});
 
@@ -100,4 +100,4 @@ function Favorites() {
   return <canvas id="brands-chart" />;
 }
 
-export default Favorites;
+export default BrandChart;

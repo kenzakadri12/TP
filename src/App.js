@@ -9,6 +9,10 @@ import AgeChart from './AgeChart';
 import PairsChart from './PairsChart';
 import * as d3 from 'd3';
 import BrandChart from './BrandChart';
+import GenreChartD3 from './GenreChartD3';
+import AgeChartD3 from './AgeChartD3';
+import BrandChartD3 from './BrandChartD3';
+import PairsChartD3 from './PairsChartD3';
 
 const marques = [
   { nom: 'ADIDAS', image: 'https://static.vecteezy.com/system/resources/thumbnails/019/766/237/small_2x/adidas-logo-adidas-icon-transparent-free-png.png' },
@@ -82,21 +86,45 @@ function App() {
         <h1 style={{ color: 'pink', fontFamily: 'Italic, sans-serif', fontSize: '24px', border: '1px solid pink', padding: '10px' }}>MARQUES</h1>
 
         </center>
-        
-        <GenreChart personnes={personnes} />
+        <div style={{ display: 'flex' }}>
+          <div style={{ width: '400px', height: '400px', marginRight: '200px'}}>
+            <h1>GenreChart</h1>
+            <GenreChart personnes={personnes} />
+         </div>
+         <div style={{ width: '400px', height: '400px', marginRight: '200px' }}>
+            <h1>GenreChartD3</h1>
+            <GenreChartD3 personnes={personnes} />
+          </div>
+        </div>
         <div style={{ display: 'flex' }}>
           <div style={{ width: '400px', height: '400px', marginRight: '200px'}}>
             <h1>AgeChart</h1>
             <AgeChart personnes={personnes} />
          </div>
          <div style={{ width: '400px', height: '400px', marginRight: '200px' }}>
-            <h1>BrandChart</h1>
-            <BrandChart personnes={personnes} />
+            <h1>AgeChartD3</h1>
+            <AgeChartD3 personnes={personnes} />
           </div>
         </div>
-
-        <div>
-          <PairsChart personnes={personnes} />
+        <div style={{ display: 'flex' }}>
+          <div style={{ width: '400px', height: '400px', marginRight: '200px'}}>
+            <h1>BrandChart</h1>
+            <BrandChart personnes={personnes} />
+         </div>
+         <div style={{ width: '400px', height: '400px', marginRight: '200px' }}>
+            <h1>BrandChartD3</h1>
+            <BrandChartD3 personnes={personnes} />
+          </div>
+        </div>
+        <div style={{ display: 'flex' }}>
+          <div style={{ width: '400px', height: '400px', marginRight: '200px'}}>
+            <h1>PairsChart</h1>
+            <PairsChart personnes={personnes} />
+         </div>
+         <div style={{ width: '400px', height: '400px', marginRight: '200px' }}>
+            <h1>PairsChartD3</h1>
+            <PairsChartD3 personnes={personnes} />
+          </div>
         </div>
         <div>
           {/* Affichez les informations des personnes ici */}
@@ -109,7 +137,7 @@ function App() {
                 </h2>
                 <button onClick={() => toggleDetails(index)}
                 style={{
-                  backgroundColor: showDetails[index] ? 'blue' : 'pink', // Couleur de fond
+                  backgroundColor: showDetails[index] ? 'rgba(173, 216, 230, 5)' : 'pink', // Couleur de fond
                   color: 'white', // Couleur du texte
                   padding: '10px 20px', // Rembourrage intérieur
                   border: 'none', // Supprime la bordure
@@ -117,7 +145,7 @@ function App() {
                   cursor: 'pointer', // Curseur de souris au survol
                }}
                >
-                {showDetails[index] ? 'Masquer les réponses' : 'Afficher les réponses'}
+                {showDetails[index] ? 'Masquer les informations' : 'plus dinformations'}
                 </button>
 
                 {showDetails[index] && (

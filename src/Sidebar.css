@@ -1,0 +1,35 @@
+/* Sidebar.css */
+
+.horizontal-sidebar {
+    width: 100%;
+    height: 60px; /* Hauteur de la barre latérale */
+    background-color: #333; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Alignement horizontal */
+    padding: 0 20px; /* Espacement intérieur horizontal */
+  }
+  
+  .horizontal-sidebar ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between; /* Alignement horizontal */
+  }
+  
+  .horizontal-sidebar li {
+    margin-right: 20px; /* Espacement horizontal entre les éléments */
+  }
+  
+  .horizontal-sidebar a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .horizontal-sidebar .dropdown-icon {
+    margin-left: 5px; /* Espacement entre le texte et l'icône */
+    font-size: 16px;
+  }
+  
